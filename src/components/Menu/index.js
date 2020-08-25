@@ -12,9 +12,15 @@ import {
   SignOutButtonText,
 } from './styles';
 
-function Menu() {
+function Menu({ translateY }) {
   return (
-    <Container>
+    <Container style={{
+      opacity: translateY.interpolate({
+        inputRange: [0, 150],
+        outputRange: [0, 1],
+      }),
+    }}
+    >
       <Code>
         <QRCode
           value="http://github.com/calebesg"
@@ -44,9 +50,7 @@ function Menu() {
       </Nav>
 
       <SignOutButton onPress={() => {}}>
-        <SignOutButtonText>
-          SAIR DO APP
-        </SignOutButtonText>
+        <SignOutButtonText>SAIR DO APP</SignOutButtonText>
       </SignOutButton>
     </Container>
   );
